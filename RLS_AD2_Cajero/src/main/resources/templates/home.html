@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/../home.css}">
+	<title>Bienvenido - Sesión iniciada</title>
+</head>
+
+<body>
+	<div id="main">
+		<h2>Bienvenido Tomás</h2>
+		<p>Está operando con la cuenta <span th:text="${cuenta.idCuenta}"></span></p>
+
+		<div id="valido" th:if="${mensaje}">
+			<p th:text="${mensaje}"></p>
+		</div>
+
+		<div id="opciones">
+			<h3>Menú de Opciones</h3>
+			<ul>
+				<li><a href="/ingresar">Ingresar</a></li>
+				<li><a href="/retirar">Retirar</a></li>
+				<li><a href="/transferencia">Transferencia</a></li>
+				<li><a href="/movimientos">Ver movimientos</a></li>
+				<br>
+				<li><a href="/logout">Cerrar Sesión</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+
+</html>

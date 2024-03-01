@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/../home.css}">
+
+	<title>Ver Movimientos</title>
+</head>
+
+<body>
+	<div id="movimientos">
+		<h2>Movimientos</h2>
+		<p>Saldo actual: <span th:text="${saldo}"></span> €</p>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Fecha</th>
+				<th>Cantidad</th>
+				<th>Operación</th>
+			</tr>
+			<tr th:each="movimiento : ${movimientos}">
+				<td th:text="${movimiento.idMovimiento}"></td>
+				<td th:text="${movimiento.fecha}"></td>
+				<td th:text="${movimiento.cantidad}"></td>
+				<td th:text="${movimiento.operacion}"></td>
+			</tr>
+		</table>
+		<br><br>
+		<a th:href="@{/home}">Volver al inicio</a>
+	</div>
+</body>
+
+</html>

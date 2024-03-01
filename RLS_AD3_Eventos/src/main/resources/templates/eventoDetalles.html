@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="/css/Index.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+	<header>
+		<nav id="navbar">
+			<div id="logo">
+				<a th:href="@{/}"> <img id="logo" src="/img/Logo.png"
+					alt="Logotipo empresa">
+				</a>
+			</div>
+			<ul>
+				<li><a th:href="@{/eventos/destacados}">Eventos Destacados</a></li>
+				<li><a th:href="@{/eventos/activos}">Eventos Activos</a></li>
+				<li><a href="#">Tipos de Eventos <i
+						class="fa fa-chevron-down"></i></a>
+					<ul>
+						<li th:each="tipo : ${listaTipos}"><a
+							th:href="@{/tipo/{id}(id=${tipo.idTipo})}"
+							th:text="${tipo.nombre}"></a></li>
+					</ul></li>
+			</ul>
+			<div id="login">
+				<ul>
+					<li class="bienvenido"><p"${#authentication.isAuthenticated()}">
+							Bienvenido/a <span
+								th:text="${#authentication.name != 'anonymousUser' ?  #authentication.name : 'Invitado'}"></span>
+						</p>
+					<li sec:authorize="isAuthenticated()"><a
+						th:href="@{/eventos/misReservas}">Mis reservas</a></li>
+
+					<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
+					<li sec:authorize="!isAuthenticated()"><a th:href="@{/signup}">Registro</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Cerrar
+							sesión</a></li>
+
+				</ul>
+			</div>
+		</nav>
+	</header>
+	
+	<h2 class="tituloD">Detalle de Evento Seleccionado</h2>
+	
+	<div class="contenidoDetalles">
+
+		<div class="detalles">
+			<div class="detalle-item">
+				<label>Id Evento :</label>
+				<p id="id" th:text="${evento.idEvento}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Nombre :</label>
+				<p id="nombre" th:text="${evento.nombre}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Descripción :</label>
+				<p id="descripcion" th:text="${evento.descripcion}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Fecha de inicio :</label>
+				<p th:text="${#dates.format(evento.fechaInicio, 'dd/MM/yyyy')}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Duración :</label>
+				<p th:text="${evento.duracion}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Dirección :</label>
+				<p th:text="${evento.direccion}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Estado :</label>
+				<p th:text="${evento.estado}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Destacado :</label>
+				<p th:text="${evento.destacado}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Aforo máximo :</label>
+				<p th:text="${evento.aforoMaximo}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Asistencia mínima :</label>
+				<p th:text="${evento.minimoAsistencia}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Precio :</label>
+				<p th:text="${evento.precio}"></p>
+			</div>
+			<div class="detalle-item">
+				<label>Tipo de evento :</label>
+				<p th:text="${evento.tipo.nombre}"></p>
+			</div>
+		</div>
+
+<div class="reserva" sec:authorize="isAuthenticated()">
+		
+		<h2 id="tituloReserva">Realiza una reserva</h2>
+			<p id="quedan">
+				Quedan : <span th:text="${quedan}"></span>
+			</p>
+
+			<div class="select">
+				<form th:action="@{/eventos/reservar/{id}(id=${evento.idEvento})}"
+					method="post">
+
+					<p>Selecciona la cantidad:</p>
+
+					<select id="cantidad" name="cantidad">
+						<option th:each="opcion : ${opciones}" th:value="${opcion}"
+							th:text="${opcion}"></option>
+					</select> 
+					<textarea id="observaciones" name="observaciones" placeholder="Si tiene alguna observación o comentario, introduzcalo aquí"></textarea>
+
+					<input type="submit" value="Enviar">
+							<h3 id="registroFallo" th:if="${mensaje1 != null}"><span th:text="${mensaje1}"></span></h3>
+							<h3 id="registroOk" th:if="${mensaje2 != null}"><span th:text="${mensaje2}"></span></h3>
+							<h3 id="registroFallo" th:if="${mensaje3 != null}"><span th:text="${mensaje3}"></span></h3>
+							<h3 id="registroFallo" th:if="${mensaje4 != null}"><span th:text="${mensaje4}"></span></h3>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

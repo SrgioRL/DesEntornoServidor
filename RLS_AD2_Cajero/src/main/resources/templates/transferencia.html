@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/../home.css}">
+
+	<title>Transferencia</title>
+</head>
+
+<body>
+	<div id="main">
+		<h2>Transferencia</h2>
+		<form action="/transferencia" method="post">
+			<label for="idCuentaDestino">Cuenta Destino:</label>
+			<input type="number" id="idCuentaDestino" name="idCuentaDestino" required>
+			<br><br>
+			<label for="cantidad">Cantidad:</label>
+			<input type="number" id="cantidad" name="cantidad" step="0.01" required>
+			<br><br>
+			<button type="submit">Realizar Transferencia</button><br><br>
+		</form>
+		<a th:href="@{/home}">Volver al inicio</a>
+	</div>
+	<br><br>
+</body>
+
+</html>

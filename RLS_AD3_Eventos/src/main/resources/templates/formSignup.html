@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="/css/Index.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+
+	<header>
+		<nav id="navbar">
+			<div id="logo">
+				<a th:href="@{/}"> <img id="logo" src="/img/Logo.png"
+					alt="Logotipo empresa">
+				</a>
+			</div>
+			<ul>
+				<li><a th:href="@{/eventos/destacados}">Eventos Destacados</a></li>
+				<li><a th:href="@{/eventos/activos}">Eventos Activos</a></li>
+				<li><a href="#">Tipos de Eventos <i
+						class="fa fa-chevron-down"></i></a>
+					<ul>
+						<li th:each="tipo : ${listaTipos}"><a
+							th:href="@{/tipo/{id}(id=${tipo.idTipo})}"
+							th:text="${tipo.nombre}"></a></li>
+					</ul></li>
+			</ul>
+			<div id="login">
+				<ul>
+
+					<li sec:authorize="isAuthenticated()"><a
+						th:href="@{/eventos/misReservas}">Mis reservas</a></li>
+
+					<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
+					<li sec:authorize="!isAuthenticated()"><a th:href="@{/signup}">Registro</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Cerrar
+							sesión</a></li>
+
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<div class="contenido">
+		<h3 id="registroFallo" th:if="${mensaje1 != null}"><span th:text="${mensaje1}"></span></h3>
+		<h3 id="registroOk" th:if="${mensaje2 != null}"><span th:text="${mensaje2}"></span></h3>
+
+
+		<form id="signupForm" th:action="@{/signup}" method="post" th:object="${usuario}">
+		<h2>Crea tu cuenta</h2>
+
+			<input type="text" th:field="*{username}" placeholder="Username" required/>
+			<input type="password" th:field="*{password}" placeholder="Contraseña" required/>
+			
+			<input type="text" th:field="*{nombre}" placeholder="Nombre" /> 
+			<input type="text" th:field="*{apellidos}" placeholder="Apellidos" />
+			<input type="text" th:field="*{direccion}" placeholder="Direccion" />
+			<button type="submit">Registrar</button>
+
+			<p>¿Ya tienes una cuenta?</p> 
+			<a th:href="@{/login}">Inicia sesión aquí</a>
+			
+		</form>
+
+	</div>
+
+</body>
+
+</html>

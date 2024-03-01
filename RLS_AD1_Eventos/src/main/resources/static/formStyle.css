@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+	background-color: #d2c3be;
+	font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+	text-align: center;
+}
+
+form {
+	max-width: 400px;
+	margin: 0 auto;
+	background: #fdfefe;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+
+}
+
+label {
+	font-weight: bold;
+	display: block;
+	margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+select {
+	height: 40px;
+}
+
+input[type="submit"] {
+	background-color: #9cb878;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: bold;
+	width: 100%;
+	color: #fdf0ea;
+	margin: 15px 0;
+	box-shadow: 2px 2px 2px #769e5a;
+}
+
+input[type="submit"]:hover {
+	background-color: #45a049;
+	box-shadow: 4px 4px 4px #769e5a;
+
+}
+
+
+#volver {
+	text-decoration: none;
+	display: block;
+	margin: 0 auto;
+	align-items: center;
+	background-color: #a55a5a;
+	border-radius: 8px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 30px;
+	width: 80%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #ffffff;
+	cursor: pointer;
+	border: none;
+	box-shadow: 2px 2px 2px #854545;
+}
+
+#volver:hover {
+	background-color: #8a4747;
+	box-shadow: 4px 4px 4px #854545;
+}

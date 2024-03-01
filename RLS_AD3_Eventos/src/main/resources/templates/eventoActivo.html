@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="/css/Index.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+	<header>
+		<nav id="navbar">
+			<div id="logo">
+				<a th:href="@{/}"> <img id="logo" src="/img/Logo.png"
+					alt="Logotipo empresa">
+				</a>
+			</div>
+			<ul>
+				<li><a th:href="@{/eventos/destacados}">Eventos Destacados</a></li>
+				<li><a th:href="@{/eventos/activos}">Eventos Activos</a></li>
+				<li><a href="#">Tipos de Eventos <i
+						class="fa fa-chevron-down"></i></a>
+					<ul>
+						<li th:each="tipo : ${listaTipos}"><a
+							th:href="@{/tipo/{id}(id=${tipo.idTipo})}"
+							th:text="${tipo.nombre}"></a></li>
+					</ul></li>
+			</ul>
+			<div id="login">
+				<ul>
+<li class="bienvenido"><p "${#authentication.isAuthenticated()}">Bienvenido/a <span th:text="${#authentication.name != 'anonymousUser' ?  #authentication.name : 'Invitado'}"></span></p>
+					<li sec:authorize="isAuthenticated()"><a
+						th:href="@{/eventos/misReservas}">Mis reservas</a></li>
+
+					<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
+					<li sec:authorize="!isAuthenticated()"><a th:href="@{/signup}">Registro</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Cerrar
+							sesión</a></li>
+
+				</ul>
+			</div>
+		</nav>
+	</header>
+<div class="contenido">
+	<h2 class="titulo">Eventos Activos</h2>
+
+	<table class="tabla">
+		<tr>
+			<th>Nombre</th>
+			<th>Descripción</th>
+			<th>Aforo</th>
+			<th>Fecha inicio</th>
+			<th>Opciones</th>
+		</tr>
+		<tr th:each="activo : ${activo}">
+			<td th:text="${activo.nombre}"></td>
+			<td th:text="${activo.descripcion}"></td>
+			<td th:text="${activo.aforoMaximo}"></td>
+			<td th:text="${#dates.format(activo.fechaInicio, 'dd/MM/yyyy')}"></td>
+			<td><a th:href="@{/eventos/detalle/{id}(id=${activo.idEvento})}">Ver detalles</a></td>
+		</tr>
+	</table>
+
+</div>
+</body>
+
+</html>

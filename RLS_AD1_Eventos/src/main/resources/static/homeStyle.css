@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+	background-color: #d2c3be;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#menu {
+	width: 80%;
+	margin: 0 auto;
+	border-collapse: separate;
+	border-spacing: 5px;
+	border-radius: 8px;
+}
+
+#menu th {
+	width: calc(100% / 7);
+	text-align: center;
+	padding: 10px;
+	border: 1px solid black;
+	background-color: #fdf0ea;
+	border-radius: 8px;
+}
+
+#menu th#seleccion {
+	background-color: dimgrey;
+	color: #fdf0ea;
+}
+
+
+#boton {
+
+	background-color: #9cb878;
+	border-radius: 8px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 20px;
+	margin-bottom: 30px;
+	width: 130px;
+	height: 50px;
+	color: #fdf0ea;
+	cursor: pointer;
+	border: none;
+	box-shadow: 2px 2px 2px #435732;
+}
+
+#boton:hover {
+	background-color: #769e5a;
+	box-shadow: 4px 4px 4px #435732;
+}
+
+#activos,
+#cancelados {
+	width: 85%;
+	margin-bottom: 75px;
+}
+
+#activos #tab1,
+#cancelados #tab3 {
+	width: 55%;
+	float: left;
+	margin-right: 15px
+}
+
+#activos #tab2 {
+	width: fit-content;
+}
+
+#cancelados #tab4 {
+	width: fit-content;
+}
+
+#activos table,
+#cancelados table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 5px;
+}
+
+#activos th,
+#activos td,
+#cancelados th,
+#cancelados td {
+	border: 1px solid darkslategrey;
+	padding: 8px;
+	text-align: center;
+}
+
+
+#activos table th,
+#cancelados table th {
+	background-color: #a89a93;
+}
+
+#activos table:not(#tab2) td,
+#cancelados table:not(#tab4) td {
+	background-color: #bfb2ac;
+}
+
+
+
+
+
+.detalles,
+.editar,
+.cancelar,
+.eliminar,
+.activar {
+	margin: 0 5px;
+	border-radius: 8px;
+	display: inline-block;
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+
+}
+
+.detalles a,
+.editar a,
+.cancelar a,
+.eliminar a,
+.activar a {
+	text-decoration: none;
+	color: aliceblue;
+}
+
+.detalles {
+	background-color: #455760;
+	box-shadow: 2px 2px 2px #2e3940;
+}
+
+.editar {
+	background-color: #6499a7;
+	box-shadow: 2px 2px 2px #3f6c7a;
+}
+
+.cancelar {
+	background-color: #f39f5a;
+	box-shadow: 2px 2px 2px #a96f3d;
+}
+
+.eliminar {
+	background-color: #b93c4a;
+	box-shadow: 2px 2px 2px #69282f;
+}
+
+.activar {
+	background-color: #9cb878;
+	box-shadow: 2px 2px 2px #70845c;
+}

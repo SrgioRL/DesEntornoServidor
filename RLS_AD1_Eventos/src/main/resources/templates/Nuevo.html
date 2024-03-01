@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../formStyle.css">
+	<title>Nuevo Evento</title>
+</head>
+
+<body>
+	<h2>FORMULARIO PARA NUEVO EVENTO</h2>
+
+	<form th:action="@{/eventos/nuevo}" method="post">
+
+		<label for="nombre">Nombre</label><input type="text" name="nombre"
+			placeholder="Introduzca el nombre de su evento"><br>
+
+		<label for="descripcion">Descripción</label><input type="text" name="descripcion"
+			placeholder="Describa brevemente su evento"><br>
+
+		<label for="fechaInicio">Fecha de inicio</label><input type="date" name="fechaInicio"
+			placeholder="Fecha de inicio"><br>
+
+		<label for="duracion">Duración</label><input type="number" name="duracion"
+			placeholder="¿Cuanto durará su evento?"><br>
+
+		<label for="direccion">Dirección</label><input type="text" name="direccion"
+			placeholder="¿En que dirección se celebrará su evento?"><br>
+
+		<label for="destacado">Destacado</label>
+		<select name="destacado">
+			<option value="S">Si</option>
+			<option value="N">No</option>
+		</select><br>
+
+		<label for="aforoMaximo">Aforo</label><input type="number" name="aforoMaximo"
+			placeholder="¿Cuál es el aforo máximo de su evento"><br>
+
+		<label for="minimoAsistencia">Asistencia mínima</label><input type="number" name="minimoAsistencia"
+			placeholder="¿Qué mínimo de asistencia dispone?"><br>
+
+		<label for="precio">Precio</label><input type="number" name="precio"
+			placeholder="¿Cuánto cuesta la asistencia a su evento?"><br>
+
+		<label for="tipo"> Tipo de Evento</label>
+		<select name="tipo.idTipo">
+			<option value="1">Concierto</option>
+			<option value="2">Exposición</option>
+			<option value="3">Visita Guiada</option>
+			<option value="4">Boda</option>
+		</select><br>
+
+		<input type="submit" value="Crear evento">
+		<br>
+		<br>
+		    <a th:href="@{/}" id="volver">Volver a la página principal</a>
+
+
+
+	</form>
+
+</body>
+
+</html>

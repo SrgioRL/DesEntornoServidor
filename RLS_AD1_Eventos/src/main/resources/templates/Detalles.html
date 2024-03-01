@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../../detallesStyle.css">
+
+	<title>Detalles del Evento</title>
+</head>
+
+<body>
+	<h2>DETALLES DEL EVENTO</h3>
+		<table>
+			<tr>
+				<td>ID Evento</td>
+				<td th:text="${evento.idEvento}"></td>
+			</tr>
+			<tr>
+				<td>Nombre</td>
+				<td th:text="${evento.nombre}"></td>
+			</tr>
+			<tr>
+				<td>Descripción</td>
+				<td th:text="${evento.descripcion}"></td>
+			</tr>
+			<tr>
+				<td>Fecha de Inicio</td>
+				<td th:text="${#dates.format(evento.fechaInicio, 'dd - MM - yyyy')}"></td>
+			</tr>
+			<tr>
+				<td>Duración</td>
+				<td th:text="${evento.duracion}"></td>
+			</tr>
+			<tr>
+				<td>Dirección</td>
+				<td th:text="${evento.direccion}"></td>
+			</tr>
+			<tr>
+				<td>Estado</td>
+				<td th:text="${evento.estado}"></td>
+			</tr>
+			<tr>
+				<td>Destacado</td>
+				<td th:text="${evento.destacado}"></td>
+			</tr>
+			<tr>
+				<td>Aforo Máximo</td>
+				<td th:text="${evento.aforoMaximo}"></td>
+			</tr>
+			<tr>
+				<td>Mínimo Asistencia</td>
+				<td th:text="${evento.minimoAsistencia}"></td>
+			</tr>
+			<tr>
+				<td>Precio</td>
+				<td th:text="${evento.precio}"></td>
+			</tr>
+			<tr>
+				<td>Tipo de Evento</td>
+				<td th:text="${evento.tipo.nombre}"></td>
+			</tr>
+		</table>
+
+
+		<a th:href="@{/}"><button>Volver a la página principal</button></a>
+
+
+
+</body>
+
+</html>

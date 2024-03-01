@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" th:href="@{/../home.css}">
+
+	<title>Bienvenido</title>
+</head>
+
+<body>
+<div id="login">
+    <h2>Por favor, introduzca su número de cuenta para continuar</h2>
+    <div id="error" th:if="${mensaje}">
+        <p th:text="${mensaje}"></p>
+    </div>
+    <form action="/login" method="post">
+        <label for="idCuenta">Número de Cuenta:</label>
+        <input type="number" id="idCuenta" name="idCuenta" required>
+        <br><br>
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+</div>
+</body>
+
+</html>

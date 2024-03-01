@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../../formStyle.css">
+
+	<title>Editar Evento</title>
+</head>
+
+<body>
+
+	<form th:action="@{/eventos/editar/{id}(id=${evento.idEvento})}" th:object="${evento}" th:method="post">
+
+		<label for="nombre">Nombre</label>
+		<input type="text" th:field="*{nombre}"><br>
+
+		<label for="descripcion">Descripción</label>
+		<input type="text" name="descripcion" th:field="*{descripcion}"><br>
+
+		<label for="fechaInicio">Fecha de inicio</label>
+		<input type="date" name="fechaInicio" th:field="*{fechaInicio}"><br>
+
+		<label for="duracion">Duración</label>
+		<input type="number" name="duracion" th:field="*{duracion}"><br>
+
+		<label for="direccion">Dirección</label>
+		<input type="text" name="direccion" th:field="*{direccion}"><br>
+
+		<label for="destacado">Destacado</label>
+		<select name="destacado" th:field="*{destacado}">
+			<option value="S">Si</option>
+			<option value="N">No</option>
+		</select><br>
+
+		<label for="aforoMaximo">Aforo</label>
+		<input type="number" name="aforoMaximo" th:field="*{aforoMaximo}"><br>
+
+		<label for="minimoAsistencia">Asistencia mínima</label>
+		<input type="number" name="minimoAsistencia" th:field="*{minimoAsistencia}"><br>
+
+		<label for="precio">Precio</label>
+		<input type="number" name="precio" th:field="*{precio}"><br>
+
+		<label for="tipo.idTipo"> Tipo de Evento</label>
+		<select name="tipo.idTipo" th:field="*{tipo.idTipo}">
+			<option value="1">Concierto</option>
+			<option value="2">Exposición</option>
+			<option value="3">Visita Guiada</option>
+			<option value="4">Boda</option>
+		</select><br>
+
+		<input type="submit" value="Modificar evento">
+		<br>
+		<br>
+		<a th:href="@{/}" id="volver">Volver a la página principal</a>
+
+</body>
+
+</html>
