@@ -43,18 +43,16 @@ public class EmpleadoRestController {
 		return empleadoService.insertOne(empleado);
 	}
 	
-	
 	@PostMapping("/elegirEmpleado")
 	public EmpleadoEnProyecto elegirEmpleado(@RequestBody EmpleadoEnProyectoDto empleadoEnProyectoDto) {
 		
-		EmpleadoEnProyecto empleadoElegido = new EmpleadoEnProyecto();
-		empleadoElegido.setDiasPrevistos(proyectoService.findOne(empleadoEnProyectoDto.getIdProyecto()).getDiasPrevistos());
-		empleadoElegido.setFechaIncorporacion(new Date());
-		empleadoElegido.setEmpleado(empleadoService.findOne(empleadoEnProyectoDto.getIdEmpleado()));
-		empleadoElegido.setProyecto(proyectoService.findOne(empleadoEnProyectoDto.getIdProyecto()));
+		EmpleadoEnProyecto empleado = new EmpleadoEnProyecto();
+		empleado.setDiasPrevistos(proyectoService.findOne(empleadoEnProyectoDto.getIdProyecto()).getDiasPrevistos());
+		empleado.setFechaIncorporacion(new Date());
+		empleado.setEmpleado(empleadoService.findOne(empleadoEnProyectoDto.getIdEmpleado()));
+		empleado.setProyecto(proyectoService.findOne(empleadoEnProyectoDto.getIdProyecto()));
 		
-		return empleadoEnProyectoService.insertOne(empleadoElegido);
-		
+		return empleadoEnProyectoService.insertOne(empleado);
 	}
 	
 	// READ
