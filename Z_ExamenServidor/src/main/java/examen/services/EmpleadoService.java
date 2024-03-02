@@ -3,7 +3,6 @@ package examen.services;
 import java.util.List;
 import examen.modelo.entities.Empleado;
 
-
 public interface EmpleadoService {
 
 	Empleado createOne(Empleado empleado);
