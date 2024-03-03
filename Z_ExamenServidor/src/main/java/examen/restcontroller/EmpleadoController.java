@@ -26,24 +26,14 @@ public class EmpleadoController {
 	
 	@Autowired
 	private EmpleadoService empleadoService;
-	/*@Autowired
-	private ProyectoService proyectoService;
-	@Autowired
-	private EmpleadoEnProyectoService empleadoEnProyectoService;
-	*/
+
 	/*
-	 * Lista empleados 
-	 * Lista proyectos
-	 * Empleados de un proyecto
-	 * Empleados sin proyecto
-	 * Director de un proyecto
-	 * 
-	 * CRUD empleados/proyectos
-	 * 
-	 * Añadir empleado a proyecto
-	 * Modificar director de un proyecto
+	 * CRUD HECHO
+	 * Empleados sin proyecto HECHO
 	 * 
 	 */
+	
+	//CRUD
 	@GetMapping({"","/"})
 	public List<Empleado> all() {
 		return empleadoService.findAll();
@@ -72,7 +62,11 @@ public class EmpleadoController {
 			return "El empleado no se ha podido eliminar";
 	}
 	
-	
+	//EMPLEADOS SIN PROYECTO
+	@GetMapping("/sinproyecto")
+	public List<Empleado> empleadosSinProyecto(){
+		return empleadoService.findEmpleadosSinProyecto();
+	}
 	
 
 	

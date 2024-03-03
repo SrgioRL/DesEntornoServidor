@@ -51,4 +51,10 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 		}
 	}
 
+	@Override
+	public List<Empleado> findEmpleadosSinProyecto() {
+		
+		return empleadoRepository.findEmpleadosSinProyecto();
+	}
+
 }

@@ -33,6 +33,17 @@ public class ProyectoController {
 	private EmpleadoService empleadoService;
 	@Autowired
 	private EmpleadoEnProyectoService empleadoEnProyectoService;
+	
+	/*
+	 * CRUD HECHO
+	 * 
+	 * Empleados de un proyecto HECHO
+	 * Director de un proyecto HECHO
+	 * 
+	 * Añadir empleado a proyecto HECHO
+	 * Modificar director de un proyecto
+	 * 
+	 */
 
 	// CRUD
 	@GetMapping({ "", "/" })
