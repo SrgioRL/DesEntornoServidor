@@ -67,12 +67,12 @@ public class ProyectoController {
 		return proyectoService.updateOne(proyecto);
 	}
 
-	@DeleteMapping("/eliminar/{idEmpleado}")
+	@DeleteMapping("/eliminar/{idProyecto}")
 	public String delete(@PathVariable int idProyecto) {
 		if (proyectoService.deleteOne(idProyecto))
-			return "Empleado eliminado correctamente";
+			return "Proyecto eliminado correctamente";
 		else
-			return "El empleado no se ha podido eliminar";
+			return "El proyecto no se ha podido eliminar";
 	}
 
 	//AÑADIR EMPLEADO A PROYECTO
@@ -107,7 +107,14 @@ public class ProyectoController {
 	    return proyectoService.updateDirector(idProyecto, directorDto.getIdEmpleado());
 	}
 
-	
+	//ELIMINAR EMPLEADO DE UN PROYECTO
+	@DeleteMapping("/eliminarempleado/{idEntrada}")
+	public String eliminarEmpleado(@PathVariable int idEntrada) {
+		if (empleadoEnProyectoService.deleteOne(idEntrada))
+			return "Empleado eliminado correctamente";
+		else
+			return "El empleado no se ha podido eliminar";
+	}
 	
 
 }
