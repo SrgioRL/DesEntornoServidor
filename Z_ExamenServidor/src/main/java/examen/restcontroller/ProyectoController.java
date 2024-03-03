@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import examen.modelo.dto.DirectorDto;
 import examen.modelo.dto.EmpleadoEnProyectoDto;
 import examen.modelo.entities.Empleado;
 import examen.modelo.entities.EmpleadoEnProyecto;
@@ -99,6 +100,13 @@ public class ProyectoController {
 		return empleadoEnProyectoService.findEmpleadosEnProyecto(idProyecto);
 		
 	}
+	
+	//MODIFICAR DIRECTOR DE UN PROYECTO
+	@PutMapping("/cambiardirector/{idProyecto}")
+	public Proyecto cambiarDirector(@PathVariable int idProyecto, @RequestBody DirectorDto directorDto) {
+	    return proyectoService.updateDirector(idProyecto, directorDto.getIdEmpleado());
+	}
+
 	
 	
 

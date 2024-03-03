@@ -47,6 +47,15 @@ public class ProyectoServiceImpl implements ProyectoService {
 	}
 
 	@Override
+	public Proyecto updateDirector(int idProyecto, int idEmpleado) {
+		Proyecto proyecto = proyectoRepository.findById(idProyecto).orElse(null);
+		Empleado nuevoDirector = empleadoRepository.findById(idEmpleado).orElse(null);
+
+		proyecto.setEmpleado(nuevoDirector);
+		return proyectoRepository.save(proyecto);
+	}
+
+	@Override
 	public boolean deleteOne(int idProyecto) {
 		try {
 			if (findOne(idProyecto) != null) {

@@ -13,6 +13,7 @@ public interface ProyectoService {
 	Empleado findDirector(int idProyecto);
 
 	Proyecto updateOne(Proyecto proyecto);
+	Proyecto updateDirector(int idProyecto, int idEmpleado);
 
 	boolean deleteOne(int idProyecto);
 
