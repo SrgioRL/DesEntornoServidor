@@ -42,6 +42,7 @@ public class ProyectoController {
 	 * Director de un proyecto HECHO
 	 * 
 	 * Añadir empleado a proyecto HECHO
+	 * Eliminar empleado de un proyecto HECHO
 	 * Modificar director de un proyecto  HECHO
 	 * 
 	 */
