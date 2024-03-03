@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import examen.modelo.entities.Empleado;
 import examen.modelo.entities.Proyecto;
+import examen.repositories.EmpleadoRepository;
 import examen.repositories.ProyectoRepository;
 
 @Service
@@ -13,9 +15,15 @@ public class ProyectoServiceImpl implements ProyectoService {
 
 	@Autowired
 	private ProyectoRepository proyectoRepository;
+	@Autowired
+	private EmpleadoRepository empleadoRepository;
 
 	@Override
 	public Proyecto createOne(Proyecto proyecto) {
+		if (proyecto.getEmpleado() != null) {
+			Empleado empleado = empleadoRepository.findById(proyecto.getEmpleado().getIdEmpleado()).orElse(null);
+			proyecto.setEmpleado(empleado);
+		}
 		return proyectoRepository.save(proyecto);
 	}
 
@@ -49,6 +57,11 @@ public class ProyectoServiceImpl implements ProyectoService {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	@Override
+	public Empleado findDirector(int idProyecto) {
+		return proyectoRepository.findDirectorDeProyecto(idProyecto);
 	}
 
 }

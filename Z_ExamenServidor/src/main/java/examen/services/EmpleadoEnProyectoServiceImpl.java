@@ -5,12 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import examen.modelo.entities.Empleado;
 import examen.modelo.entities.EmpleadoEnProyecto;
 import examen.repositories.EmpleadoEnProyectoRepository;
 
 @Service
 public class EmpleadoEnProyectoServiceImpl implements EmpleadoEnProyectoService {
-	
+
 	@Autowired
 	private EmpleadoEnProyectoRepository empleadoEnProyectoRepository;
 
@@ -27,6 +28,11 @@ public class EmpleadoEnProyectoServiceImpl implements EmpleadoEnProyectoService 
 	@Override
 	public List<EmpleadoEnProyecto> findAll() {
 		return empleadoEnProyectoRepository.findAll();
+	}
+
+	@Override
+	public List<Empleado> findEmpleadosEnProyecto(int idProyecto) {
+		return empleadoEnProyectoRepository.findEmpleadosEnProyecto(idProyecto);
 	}
 
 	@Override
